@@ -1,0 +1,28 @@
+{% extends 'buscador.html' %}
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="card col-4 offset-4 shadow-lg mt-2">
+        <img src="{% static 'images/logo.jpg' %}" alt="logo" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title text-primary"> registro de usuario </h5>
+            <hr>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="row">
+                    <div class="col">
+                        <a href="{% url 'Home' %}" class="btn btn-dark">Ir al inicio</a>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

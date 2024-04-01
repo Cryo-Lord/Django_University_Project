@@ -1,0 +1,1 @@
+El proyecto de Django fue creado por mi en su totalidad, incluida la conexión a GCP, los modelos, las vistas y sus enlaces.

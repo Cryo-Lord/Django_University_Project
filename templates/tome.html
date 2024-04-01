@@ -1,0 +1,41 @@
+<html>
+{% load static %}
+{% include 'header.html' %}
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container-fluid col-4 offset-4 shadow-lg">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="row">
+                    <div class="card col-7 mb-3 m-2">
+                        <div class="card-body">
+                            <h2>Categorias</h2>
+                        </div>
+                        <div class="card-footer bg-primary">
+                            <a href="{% url 'Detalles_categorias' %}" class="btn btn-outline-success m-2"> Ingresar </a>
+                        </div>
+                    </div>
+                    <div class="card col-7 mb-3 m-2">
+                        <div class="card-body">
+                            <h2>Marcas</h2>
+                        </div>
+                        <div class="card-footer bg-primary">
+                            <a href="{% url 'Detalles_marcas' %}" class="btn btn-outline-success m-2"> Ingresar </a>
+                        </div>
+                    </div>
+                    <div class="card col-7 mb-3 m-2">
+                        <div class="card-body">
+                            <h2>Productos</h2>
+                        </div>
+                        <div class="card-footer bg-primary">
+                            <a href="{% url 'Select' %}" class="btn btn-outline-success m-2"> Ingresar </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% include 'footer.html' %}

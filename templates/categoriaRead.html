@@ -1,0 +1,41 @@
+{% extends "buscador.html" %}
+{% block contenido %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <div class="row">
+                    <div class="col">
+                        <h2>Listado de categorias</h2>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="col">
+                        <a href="{% url 'añadirCategoria' %}" class="btn btn-success">Agregar categoria</a>
+                    </div>
+                    <div class="row">
+                        {% for categoria in categorias %}
+                        <div class="card col-3 mb-3 m-2">
+                            <div class="card-header">
+                                <h2>{{categoria.nombre}}</h2>
+                            </div>
+                            <div class="card-body">
+                                <img class='m-2' src='' alt="{{categoria.imagen}}">
+                                <br>
+                                {{categoria.descripcion}}
+                            </div>
+                            <div class="card-footer">
+                                <a href={% url 'editarCategoria' categoria.id%} class="btn btn-sm btn-warning">Modificar</a>
+                                <a href={% url 'eliminarCategoria' categoria.id%} class="btn btn-sm btn-danger">Eliminar</a>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+                    {% else %}
+                    <div class="row">
+                        <h1> Acceso Restringido </h1>
+                    </div>
+                    {% endif %}
+            </div>   
+        </div>
+    </div>
+</div>
+{% endblock %}

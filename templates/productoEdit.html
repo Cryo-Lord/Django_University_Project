@@ -1,0 +1,52 @@
+{% extends 'buscador.html' %}
+{% block contenido %}
+<div class="row mt-5">
+    <div class="col">
+        <h2>Modificar Producto</h2>
+        <form action="{% url 'productoEditado' producto.id %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                {{form.non_field_errors}}
+                <div class="col-3 mb-3">
+                    {{form.nombre.label_tag}}
+                    {{form.nombre}}
+                    {{form.nombre.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.categoria.label_tag}}
+                    {{form.categoria}}
+                    {{form.categoria.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.marca.label_tag}}
+                    {{form.marca}}
+                    {{form.marca.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.precio.label_tag}}
+                    {{form.precio}}
+                    {{form.precio.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.disponibilidad.label_tag}}
+                    {{form.disponibilidad}}
+                    {{form.disponibilidad.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.cantidad.label_tag}}
+                    {{form.cantidad}}
+                    {{form.cantidad.errors}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="" class="btn btn-dark">Volver</a>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-warning">Editar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

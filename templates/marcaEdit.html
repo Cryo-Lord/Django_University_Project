@@ -1,0 +1,43 @@
+{% extends 'buscador.html'%}
+{% block contenido %}
+<div class="row mt-5">
+    <div class="col">
+        <h2>Agregar Marca</h2>
+        {% if user.is_authenticated %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                {{form.non_field_errors}}
+                <div class="col-3 mb-3">
+                    {{form.nombre.label_tag}}
+                    {{form.nombre}}
+                    {{form.nombre.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.imagen.label_tag}}
+                    {{form.imagen}}
+                    {{form.imagen.errors}}
+                </div>
+                <div class="col-3 mb-3">
+                    {{form.descripcion.label_tag}}
+                    {{form.descripcion}}
+                    {{form.descripcion.errors}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'Home' %}" class="btn btn-dark">Ir al inicio</a>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </form>
+        {% else %}
+        <div class="row">
+            <h1> Acceso Restringido </h1>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

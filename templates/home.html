@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% include 'header.html' %}
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h2>Catalogo</h2>
+                <div class="row">
+                    {% for categoria in categorias %}
+                    <div class="card col-3 mb-3 m-2">
+                        <div class="card-header">
+                            <h2>{{ categoria.nombre }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <img class="m-2" src="" alt="{{ categoria.nombre }}">
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'Detalles_categoria' categoria.id%}" class="btn btn-primary">Revisar categoria</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% include 'footer.html' %}

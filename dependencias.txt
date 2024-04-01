@@ -1,0 +1,9 @@
+django
+mysqlclient
+pillow
+django-crispy-forms
+crispy-bootstrap5
+django-gcloud-connectors
+pymysql
+google
+sqlalchemy

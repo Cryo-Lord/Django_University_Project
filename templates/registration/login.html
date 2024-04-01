@@ -1,0 +1,33 @@
+{% extends 'buscador.html' %}
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="card col-4 offset-4 shadow-lg mt-2">
+        <img src="{% static 'images/logo.jpg' %}" alt="logo" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title text-primary"> Ingreso de usuario </h5>
+            <hr>
+            {% if user.is_authenticated %}
+                <div class="d-flex justify-content-center">
+                    <h1> Usuario ya autenticado </h1>    
+                </div>
+                <a href="{% url 'Select' %}" class="btn btn-success d-flex justify-content-center">
+                        Ingresar
+                    </a>
+            {% else %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-flex justify-content-end">
+                    <input type="reset" class="btn btn-secondary" value="Cancelar">&nbsp;
+                    <input type="submit" class="btn btn-dark" value="Ingresar">
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

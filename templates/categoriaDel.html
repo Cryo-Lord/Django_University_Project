@@ -1,0 +1,26 @@
+{% extends 'buscador.html'%}
+{% block contenido %}
+<div class="row">
+    <div class="col-10 offset-1">
+        <h3>Confirmar eliminación</h3>
+        {% if user.is_authenticated %}
+        <div class="alert alert-danger h5">¿Esta seguro de eliminar la categoria {{ categoria.nombre }} de la pagina? </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'Detalles_categorias' %}" class="btn btn-dark">Cancelar</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger" type="submit">Confirmar</button>
+                </div>
+            </div>
+        </form>
+        {% else %}
+        <div class="row">
+            <h1> Acesso Restringido </h1>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

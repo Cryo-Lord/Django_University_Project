@@ -1,0 +1,38 @@
+{% extends "buscador.html" %}
+{% block contenido %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <div class="row">
+                    <div class="col">
+                        <h2>Listado de marcas</h2>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'añadirMarca' %}" class="btn btn-success">Agregar marca</a>
+                    </div>
+            </div>
+            <div class="row">
+            {% for marca in marcas %}
+            <div class="card col-3 mb-3 m-2">
+                <div class="card-header">
+                    <h2>{{marca.nombre}}</h2>
+                </div>
+                <div class="card-body">
+                    <img class='m-2' src='' alt="{{marca.imagen}}">
+                    <br>
+                    {{marca.descripcion}}
+                </div>
+                <div class="card-footer">
+                    <a href={% url 'editarMarca' marca.id%} class="btn btn-sm btn-warning">Modificar</a>
+                    <a href={% url 'eliminarMarca' marca.id%} class="btn btn-sm btn-danger">Eliminar</a>
+                </div>
+            
+            </div>
+            {% endfor%}
+            </div>
+        </div>
+                
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "buscador.html" %}
+{% block contenido %}
+    <div class="row mt-4">
+        <div class="col">
+            <div class="row">
+                    <div class="col">
+                        <h2>Listado de productos</h2>
+                    </div>
+                    {% if user.is_superuser %}
+                    <div class="col">
+                        <a href="{% url 'añadirProducto' %}" class="btn btn-success">Agregar producto</a>
+                    </div>
+                    {% endif %}
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Disponibilidad</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                        <tr>    
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.categoria }}</td>
+                            <td>{{ producto.precio }}</td>
+                            <td>{{ producto.disponibilidad }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>{{ producto.imagen }}</td>
+                            <td>
+                            {% if user.is_superuser %}
+                                <a href={% url 'editarProducto' producto.id%} class="btn btn-sm btn-warning">Modificar</a>
+                                <a href={% url 'eliminarProducto' producto.id%} class="btn btn-sm btn-danger">Eliminar</a>
+                            {% else %}
+                                <a href="{% url 'Home' %}" class="btn btn-sm btn-success"> Comprar </a>
+                                <a href="{% url 'Home' %}" class="btn btn-sm btn-warning"> Arrendar </a>
+                            {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor%}    
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

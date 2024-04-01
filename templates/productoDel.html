@@ -1,0 +1,20 @@
+{% extends 'buscador.html'%}
+{% block contenido %}
+<div class="row">
+    <div class="col-10 offset-1">
+        <h3>Confirmar eliminación</h3>
+        <div class="alert alert-danger h5">¿Esta seguro de eliminar el producto {{ producto.nombre }} de la categoria {{ producto.categoria }} </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'Detalles_categoria' categoria.id %}" class="btn btn-dark">Cancelar</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger" type="submit">Confirmar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
