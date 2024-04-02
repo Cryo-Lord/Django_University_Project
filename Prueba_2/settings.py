@@ -15,8 +15,6 @@ from pathlib import Path
 import os
 
 #from google.cloud.sql.connector import Connector
-import pymysql
-
 """
 def connect_with_connector() -> sqlalchemy.engine.base.Engine:
 """
